@@ -3,8 +3,8 @@ import { FaStar } from 'react-icons/fa';
 
 function MovieSection() {
   return (
-    <div className='w-screen h-screen text-white'>
-      <div>
+    <div className='w-screen h-screen text-white sm:flex sm:items-center sm:justify-center'>
+      <div className='max-w-[680px] w-full sm:rounded-[20px] bg-[#10101c] overflow-hidden sm:shadow-2xl'>
         <div className='backdrop h-[230px] relative'>
           <div className='absolute  w-full h-[20px] bottom-0 rounded-tl-[20px] rounded-tr-[20px] bg-[#10101c]'></div>
           <img
@@ -31,7 +31,7 @@ function MovieSection() {
             <p className='text-[#fff7] text-sm'>1h 41min</p>
           </div>
         </div>
-        <div className='about px-5'>
+        <div className='about px-5 translate-y-[-40px]'>
           <h1 className='text-2xl text-[#614de2] font-bold mb-3'>
             About Movie
           </h1>

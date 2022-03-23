@@ -97,7 +97,7 @@ export default function Home() {
         <div className=' absolute top-0 left-[400vw] w-screen min-h-screen flex items-center justify-center  '>
           <RadioSelection5 />
         </div>
-        <div className=' absolute top-0 left-[500vw] w-screen min-h-screen bg-[#10101c]'>
+        <div className=' absolute top-0 left-[500vw] w-screen min-h-screen bg-[#10101c] sm:bg-[#151D3B] '>
           <MovieSection />
         </div>
       </div>
