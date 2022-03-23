@@ -11,7 +11,7 @@ function RadioSelection4() {
       {/* <div className='glass'></div> */}
       <div className='px-3  relative z-[3] '>
         <h1 className='text-[1.5rem] sm:text-[2rem] sm:leading-10 text-white font-bold text-center mb-5'>
-          Please select all MPAA ratings that you're okay with.
+          {`Please select all MPAA ratings that you're okay with.`}
         </h1>
         {/* <p className='text-xs  text-center mb-4 text-[#fff8] font-medium '>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita,

@@ -1,6 +1,6 @@
 export const interested = [
   {
-    name: 'I dont have a preference.',
+    name: `I don't have a preference.`,
   },
   {
     name: 'Movies based on a true story',

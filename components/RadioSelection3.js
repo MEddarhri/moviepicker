@@ -29,7 +29,7 @@ function RadioSelection3() {
               className='text-sm text-[#fff5] rounded-[8px] shadow-inset bg-[#2b2b38] block py-3 pl-10  '
               htmlFor='lbs3-1'
             >
-              Doesn't matter.
+              {`Doesn't matter.`}
             </label>
           </div>
           <div className='relative  rounded-[8px] overflow-hidden outer-shadow'>
