@@ -56,17 +56,17 @@ export default function Home() {
         {`${pos + 1} / 5`}
       </p>
       <button
-        className='absolute bottom-4 right-4 lg:right-[30vw] lg:bottom-[2vw] z-50 text-sm px-2 py-1 rounded-[5px] bg-[#ff715b] font-bold text-[#FFFFFF] '
+        className='absolute bottom-10 text-[1.1rem]  right-4 lg:right-[30vw] lg:bottom-[2vw] z-50 text-sm px-3 py-2 rounded-[5px] bg-[#ff715b] font-bold text-[#FFFFFF] '
         onClick={handleNext}
       >
         Next
       </button>
       {pos > 0 && (
         <button
-          className='absolute bottom-4 left-4 lg:left-[30vw] lg:bottom-[2vw] z-50'
+          className='absolute bottom-11 left-4 lg:left-[30vw] lg:bottom-[2vw] z-50'
           onClick={handlePrev}
         >
-          <BiArrowBack className='text-[1.4rem] text-[#fff]' />
+          <BiArrowBack className='text-[1.7rem] text-[#fff]' />
         </button>
       )}
       <div className='relative transition duration-300' ref={cont}>
