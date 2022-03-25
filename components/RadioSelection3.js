@@ -10,7 +10,7 @@ function RadioSelection3() {
       /> */}
       {/* <div className='glass'></div> */}
       <div className='px-3  relative z-[3] '>
-        <h1 className='text-[1.5rem] text-white font-bold text-center mb-5'>
+        <h1 className='text-[1.5rem] text-white font-bold text-center mb-5 inter'>
           How old would you like the movie to be?
         </h1>
         {/* <p className='text-xs  text-center mb-4 text-[#fff8] font-medium '>
