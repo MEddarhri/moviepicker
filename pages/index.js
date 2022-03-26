@@ -149,6 +149,8 @@ export default function Home() {
       return '&release_date.gte=2017';
     } else if (formData.year == 'l10') {
       return '&release_date.gte=2012';
+    } else if (formData.year == 'dm') {
+      return '';
     }
   }
 
