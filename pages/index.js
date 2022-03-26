@@ -11,6 +11,9 @@ export default function Home() {
   const cont = useRef(null);
   const [pos, setPos] = useState(0);
   const [moviesData, setMoviesData] = useState([]);
+  const [totalPages, setTotalPages] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const condition = pos > 0 && pos <= 5;
 
@@ -65,12 +68,27 @@ export default function Home() {
 
   async function getMovie() {
     try {
-      const res = await fetch(
+      console.log('in');
+      const primaryRes = await fetch(
         'https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&primary_release_year=2022'
       );
+      const primaryData = await primaryRes.json();
+      setTotalPages(primaryData.total_pages);
+
+      const res = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&primary_release_year=2022&page=${currentPage}`
+      );
       const data = await res.json();
-      console.log(data);
-      setMoviesData(data);
+      setMoviesData(data.results[currentIndex]);
+      setCurrentIndex((prev) => prev + 1);
+      console.log({ currentIndex });
+      if (currentIndex === 19 && currentPage < totalPages) {
+        setCurrentIndex(0);
+        setCurrentPage((prev) => prev + 1);
+        console.log('if');
+        console.log({ currentIndex });
+        console.log({ currentPage });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -117,7 +135,16 @@ export default function Home() {
           <RadioSelection5 />
         </div>
         <div className=' absolute top-0 left-[500vw] w-screen min-h-screen bg-[#10101c] sm:bg-[#252A34] '>
-          {moviesData.results && <MovieSection />}
+          {moviesData.id && (
+            <MovieSection
+              moviesData={moviesData}
+              getMovie={getMovie}
+              setMoviesData={setMoviesData}
+              setTotalPages={setTotalPages}
+              setCurrentIndex={setCurrentIndex}
+              setCurrentPage={setCurrentPage}
+            />
+          )}
           {moviesData.length == 0 && (
             <div className='w-full h-screen flex items-center justify-center'>
               <div className='lds-roller'>
