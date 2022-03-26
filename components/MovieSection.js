@@ -68,9 +68,12 @@ function MovieSection({
           <p>{moviesData.overview}</p>
         </div>
         <div className='mt-[30px] sm:hidden flex items-center justify-center flex-1'>
-          <button className='px-2 py-1  border-2 border-[#614de2] rounded-lg flex items-center  space-x-1'>
-            <p>Another go</p>
-            <GoRocket className='text-xs' />
+          <button
+            className='px-2 py-1  border-2 border-[#614de2] rounded-lg flex items-center  space-x-1'
+            onClick={anotherMovie}
+          >
+            <p className='text-lg'>Another go</p>
+            <GoRocket className='text-base' />
           </button>
         </div>
       </div>
