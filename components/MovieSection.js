@@ -6,7 +6,7 @@ import { GoRocket } from 'react-icons/go';
 function MovieSection({ moviesData, getMovie, setMoviesData }) {
   let description;
   function anotherMovie() {
-    setMoviesData([]);
+    setMoviesData({});
     getMovie();
   }
 
@@ -24,7 +24,7 @@ function MovieSection({ moviesData, getMovie, setMoviesData }) {
           <img
             className='w-full h-full object-cover '
             src={`https://www.themoviedb.org/t/p/original${moviesData.backdrop_path}`}
-            alt={moviesData.original_title}
+            alt={moviesData.title}
           />
           <div className='trailer cursor-pointer z-10 absolute w-full h-full bg-[#0005] inset-0 flex items-center justify-center '>
             <div className='play w-[50px] h-[50px] rounded-[50%] flex items-center justify-center bg-blue-500 bg-opacity-50'>
@@ -37,13 +37,11 @@ function MovieSection({ moviesData, getMovie, setMoviesData }) {
             <img
               className='w-full h-full object-cover'
               src={`https://www.themoviedb.org/t/p/original${moviesData.poster_path}`}
-              alt={moviesData.original_title}
+              alt={moviesData.title}
             />
           </div>
           <div className='title'>
-            <h1 className='text-2xl font-bold mb-3'>
-              {moviesData.original_title}
-            </h1>
+            <h1 className='text-2xl font-bold mb-3'>{moviesData.title}</h1>
             <div className='rating w-max flex items-center  space-x-1 px-1 rounded bg-[#614de2] mb-2'>
               <FaStar className='text-lg' />
               <p className='pt-[0.075rem]'>{moviesData.vote_average}</p>

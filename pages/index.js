@@ -11,7 +11,7 @@ import { selectGenre } from '../data/selectGenres';
 export default function Home() {
   const cont = useRef(null);
   const [pos, setPos] = useState(0);
-  const [moviesData, setMoviesData] = useState([]);
+  const [moviesData, setMoviesData] = useState({});
   const [totalPages, setTotalPages] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -160,13 +160,13 @@ export default function Home() {
       const genreIds = getGenres();
       const releaseYear = getYear();
       const primaryRes = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&with_genres=${genreIds}${releaseYear}&sort_by=popularity.desc`
+        `https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&with_genres=${genreIds}${releaseYear}`
       );
       const primaryData = await primaryRes.json();
       setTotalPages(primaryData.total_pages);
 
       const res = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&with_genres=${genreIds}${releaseYear}&sort_by=popularity.desc&page=${currentPage}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&with_genres=${genreIds}${releaseYear}&page=${currentPage}`
       );
       const data = await res.json();
       setMoviesData(data.results[currentIndex]);
@@ -191,8 +191,7 @@ export default function Home() {
       setFormData({ ...formData, age: e.target.dataset.value });
     }
   }
-  console.log(formData);
-
+  console.log(moviesData);
   return (
     <div className=' relative w-screen min-h-screen overflow-hidden nunito sc-1'>
       {pos !== 5 && (
@@ -235,14 +234,14 @@ export default function Home() {
           <RadioSelection5 />
         </div>
         <div className=' absolute top-0 left-[500vw] w-screen min-h-screen bg-[#10101c] sm:bg-[#252A34] '>
-          {moviesData.id && (
+          {Object.keys(moviesData).length > 0 && (
             <MovieSection
               moviesData={moviesData}
               getMovie={getMovie}
               setMoviesData={setMoviesData}
             />
           )}
-          {moviesData.length == 0 && (
+          {Object.keys(moviesData).length == 0 && (
             <div className='w-full h-screen flex items-center justify-center'>
               <div className='lds-roller'>
                 <div></div>
