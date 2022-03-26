@@ -6,6 +6,7 @@ import RadioSelection3 from '../components/RadioSelection3';
 import RadioSelection4 from '../components/RadioSelection4';
 import RadioSelection5 from '../components/RadioSelection5';
 import MovieSection from '../components/MovieSection';
+import { selectGenre } from '../data/selectGenres';
 
 export default function Home() {
   const cont = useRef(null);
@@ -125,18 +126,45 @@ export default function Home() {
       setPos((prev) => prev - 1);
     }
   }
+
+  //!setting up genres
+  function getGenres() {
+    let result = [];
+    for (let i = 0; i < genreString.length; i++) {
+      let str = genreString[i];
+      if (formData[str]) {
+        result.push(selectGenre[str]);
+      }
+    }
+    return result.join(',');
+  }
+  //!setting up realse year
+
+  function getYear() {
+    if (formData.year == 'l2') {
+      return '&release_date.gte=2020';
+    } else if (formData.year == 'l3') {
+      return '&release_date.gte=2019';
+    } else if (formData.year == 'l5') {
+      return '&release_date.gte=2017';
+    } else if (formData.year == 'l10') {
+      return '&release_date.gte=2012';
+    }
+  }
+
   const condition2 = checkAllEmpty() && pos == 1;
   async function getMovie() {
     try {
-      console.log('in');
+      const genreIds = getGenres();
+      const releaseYear = getYear();
       const primaryRes = await fetch(
-        'https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&primary_release_year=2022'
+        `https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&with_genres=${genreIds}${releaseYear}&sort_by=popularity.desc`
       );
       const primaryData = await primaryRes.json();
       setTotalPages(primaryData.total_pages);
 
       const res = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&primary_release_year=2022&page=${currentPage}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&with_genres=${genreIds}${releaseYear}&sort_by=popularity.desc&page=${currentPage}`
       );
       const data = await res.json();
       setMoviesData(data.results[currentIndex]);
