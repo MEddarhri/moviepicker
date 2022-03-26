@@ -15,7 +15,67 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [formData, setFormData] = useState({
+    Action: false,
+    Adventure: false,
+    Animation: false,
+    Comedy: false,
+    Crime: false,
+    Documentary: false,
+    Drama: false,
+    Family: false,
+    Fantasy: false,
+    History: false,
+    Horror: false,
+    Music: false,
+    Mystery: false,
+    Romance: false,
+    'Science Fiction': false,
+    'TV Movie': false,
+    Thriller: false,
+    War: false,
+    Western: false,
+    year: 'dm',
+    age: 'g-rated',
+  });
+
   const condition = pos > 0 && pos <= 5;
+
+  const genreString = [
+    'Action',
+    'Adventure',
+    'Animation',
+    'Comedy',
+    'Crime',
+    'Documentary',
+    'Drama',
+    'Family',
+    'Fantasy',
+    'History',
+    'Horror',
+    'Music',
+    'Mystery',
+    'Romance',
+    'Science Fiction',
+    'TV Movie',
+    'Thriller',
+    'War',
+    'Western',
+  ];
+  function checkAllEmpty() {
+    let count = 0;
+    for (let i = 0; i < genreString.length; i++) {
+      let str = genreString[i];
+      if (formData[str] == false) {
+        count++;
+      }
+    }
+    if (count == 19) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   function handleNext() {
     switch (pos) {
@@ -65,7 +125,7 @@ export default function Home() {
       setPos((prev) => prev - 1);
     }
   }
-
+  const condition2 = checkAllEmpty() && pos == 1;
   async function getMovie() {
     try {
       console.log('in');
@@ -81,19 +141,27 @@ export default function Home() {
       const data = await res.json();
       setMoviesData(data.results[currentIndex]);
       setCurrentIndex((prev) => prev + 1);
-      console.log({ currentIndex });
+
       if (currentIndex === 19 && currentPage < totalPages) {
         setCurrentIndex(0);
         setCurrentPage((prev) => prev + 1);
-        console.log('if');
-        console.log({ currentIndex });
-        console.log({ currentPage });
       }
     } catch (error) {
       console.log(error);
     }
   }
-  console.log(moviesData);
+
+  function handleChange(e) {
+    if (e.target.dataset.type == 'genre') {
+      const value = formData[e.target.name];
+      setFormData({ ...formData, [e.target.name]: !value });
+    } else if (e.target.dataset.type == 'year') {
+      setFormData({ ...formData, year: e.target.dataset.value });
+    } else if (e.target.dataset.type == 'age') {
+      setFormData({ ...formData, age: e.target.dataset.value });
+    }
+  }
+  console.log(formData);
 
   return (
     <div className=' relative w-screen min-h-screen overflow-hidden nunito sc-1'>
@@ -104,7 +172,9 @@ export default function Home() {
       )}
       {pos !== 5 && (
         <button
-          className='absolute bottom-10 text-[1.1rem]  right-4 lg:right-[30vw] lg:bottom-[2vw] z-50 text-sm px-3 py-2 rounded-[5px] bg-[#ff715b] font-bold text-[#FFFFFF] '
+          className={`absolute bottom-10 text-[1.1rem]  right-4 lg:right-[30vw] lg:bottom-[2vw] z-50 text-sm px-3 py-2 rounded-[5px] bg-[#ff715b] font-bold text-[#FFFFFF] ${
+            condition2 && 'hidden invisible pointer-events-none'
+          }`}
           onClick={handleNext}
         >
           Next
@@ -123,13 +193,13 @@ export default function Home() {
           <RadioSelection1 />
         </div>
         <div className=' absolute top-0 left-[100vw] w-screen min-h-screen flex   items-center '>
-          <RadioSelection2 />
+          <RadioSelection2 handleChange={handleChange} />
         </div>
         <div className=' absolute top-0 left-[200vw] w-screen min-h-screen flex items-center justify-center  '>
-          <RadioSelection3 />
+          <RadioSelection3 handleChange={handleChange} formData={formData} />
         </div>
         <div className=' absolute  top-0 left-[300vw] w-screen min-h-screen flex items-center justify-center  '>
-          <RadioSelection4 />
+          <RadioSelection4 handleChange={handleChange} formData={formData} />
         </div>
         <div className=' absolute top-0 left-[400vw] w-screen min-h-screen flex items-center justify-center  '>
           <RadioSelection5 />

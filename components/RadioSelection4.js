@@ -1,6 +1,6 @@
 import React from 'react';
 
-function RadioSelection4() {
+function RadioSelection4({ handleChange, formData }) {
   return (
     <div className='max-w-[630px] w-full mx-auto'>
       {/* <img
@@ -24,6 +24,10 @@ function RadioSelection4() {
               type='radio'
               name='lbs4'
               id='lbs4-1'
+              data-type='age'
+              data-value='g-rated'
+              checked={formData.age == 'g-rated'}
+              onChange={handleChange}
             />
             <label
               className='text-sm text-[#fff5] rounded-[8px] shadow-inset bg-[#2b2b38] block py-3 pl-10  '
@@ -38,6 +42,10 @@ function RadioSelection4() {
               type='radio'
               name='lbs4'
               id='lbs4-2'
+              data-type='age'
+              data-value='pg-rated'
+              checked={formData.age == 'pg-rated'}
+              onChange={handleChange}
             />
             <label
               className='text-sm block rounded-[8px] shadow-inset text-[#fff5] bg-[#2b2b38] py-3 pl-10 '
@@ -52,6 +60,10 @@ function RadioSelection4() {
               type='radio'
               name='lbs4'
               id='lbs4-3'
+              data-type='age'
+              data-value='pg-13-rated'
+              checked={formData.age == 'pg-13-rated'}
+              onChange={handleChange}
             />
             <label
               className='text-sm block rounded-[8px] shadow-inset text-[#fff5] bg-[#2b2b38] py-3 pl-10 '
@@ -67,6 +79,10 @@ function RadioSelection4() {
               type='radio'
               name='lbs4'
               id='lbs4-4'
+              data-type='age'
+              data-value='r-rated'
+              checked={formData.age == 'r-rated'}
+              onChange={handleChange}
             />
             <label
               className='text-sm block rounded-[8px] shadow-inset text-[#fff5] bg-[#2b2b38] py-3 pl-10 '

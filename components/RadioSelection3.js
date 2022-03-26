@@ -1,6 +1,6 @@
 import React from 'react';
 
-function RadioSelection3() {
+function RadioSelection3({ handleChange, formData }) {
   return (
     <div className='max-w-[600px] w-full mx-auto'>
       {/* <img
@@ -24,6 +24,10 @@ function RadioSelection3() {
               type='radio'
               name='lbs3'
               id='lbs3-1'
+              data-type='year'
+              data-value='dm'
+              checked={formData.year == 'dm'}
+              onChange={handleChange}
             />
             <label
               className='text-sm text-[#fff5] rounded-[8px] shadow-inset bg-[#2b2b38] block py-3 pl-10  '
@@ -38,6 +42,10 @@ function RadioSelection3() {
               type='radio'
               name='lbs3'
               id='lbs3-2'
+              data-type='year'
+              data-value='l2'
+              checked={formData.year == 'l2'}
+              onChange={handleChange}
             />
             <label
               className='text-sm block rounded-[8px] shadow-inset text-[#fff5] bg-[#2b2b38] py-3 pl-10 '
@@ -52,6 +60,10 @@ function RadioSelection3() {
               type='radio'
               name='lbs3'
               id='lbs3-3'
+              data-type='year'
+              data-value='l3'
+              checked={formData.year == 'l3'}
+              onChange={handleChange}
             />
             <label
               className='text-sm block rounded-[8px] shadow-inset text-[#fff5] bg-[#2b2b38] py-3 pl-10 '
@@ -66,6 +78,10 @@ function RadioSelection3() {
               type='radio'
               name='lbs3'
               id='lbs3-4'
+              data-type='year'
+              data-value='l5'
+              checked={formData.year == 'l5'}
+              onChange={handleChange}
             />
             <label
               className='text-sm block rounded-[8px] shadow-inset text-[#fff5] bg-[#2b2b38] py-3 pl-10 '
@@ -80,6 +96,10 @@ function RadioSelection3() {
               type='radio'
               name='lbs3'
               id='lbs3-5'
+              data-type='year'
+              data-value='l10'
+              checked={formData.year == 'l10'}
+              onChange={handleChange}
             />
             <label
               className='text-sm block rounded-[8px] shadow-inset text-[#fff5] bg-[#2b2b38] py-3 pl-10 '

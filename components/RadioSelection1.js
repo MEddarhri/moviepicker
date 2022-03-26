@@ -24,6 +24,7 @@ function RadioSelection1() {
               type='radio'
               name='lbs1'
               id='lbs1-1'
+              defaultChecked
             />
             <label
               className='text-sm text-[#fff5] rounded-[8px] shadow-inset bg-[#2b2b38] block py-3 pl-10  '

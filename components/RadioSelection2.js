@@ -2,7 +2,7 @@ import React from 'react';
 import { genres } from '../data/genres';
 import MovieGenre from './MovieGenre';
 
-function RadioSelection2() {
+function RadioSelection2({ handleChange }) {
   return (
     <div className='max-w-[700px] w-full mx-auto'>
       {/* <img
@@ -21,7 +21,13 @@ function RadioSelection2() {
         </p> */}
         <div className='grid grid-cols-2 md:grid-cols-3  auto-rows-max gap-2  pb-[40px] h-[50vh] md:h-auto overflow-scroll md:overflow-hidden'>
           {genres.map((genre, idx) => (
-            <MovieGenre key={idx} genre={genre} index={idx} sec={2} />
+            <MovieGenre
+              key={idx}
+              genre={genre}
+              index={idx}
+              sec={2}
+              handleChange={handleChange}
+            />
           ))}
         </div>
       </div>
