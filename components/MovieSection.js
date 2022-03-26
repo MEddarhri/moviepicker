@@ -3,17 +3,17 @@ import { FaStar } from 'react-icons/fa';
 import { FaPlay } from 'react-icons/fa';
 import { GoRocket } from 'react-icons/go';
 
-function MovieSection({
-  moviesData,
-  getMovie,
-  setMoviesData,
-  setTotalPages,
-  setCurrentIndex,
-  setCurrentPage,
-}) {
+function MovieSection({ moviesData, getMovie, setMoviesData }) {
+  let description;
   function anotherMovie() {
     setMoviesData([]);
     getMovie();
+  }
+
+  if (moviesData.overview.length >= 200) {
+    description = moviesData.overview.slice(0, 200) + '...';
+  } else {
+    description = moviesData.overview;
   }
 
   return (
@@ -65,7 +65,7 @@ function MovieSection({
           <h1 className='text-2xl text-[#614de2] font-bold mb-3'>
             About Movie
           </h1>
-          <p>{moviesData.overview}</p>
+          <p>{description}</p>
         </div>
         <div className='mt-[30px] sm:hidden flex items-center justify-center flex-1'>
           <button

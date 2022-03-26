@@ -140,9 +140,6 @@ export default function Home() {
               moviesData={moviesData}
               getMovie={getMovie}
               setMoviesData={setMoviesData}
-              setTotalPages={setTotalPages}
-              setCurrentIndex={setCurrentIndex}
-              setCurrentPage={setCurrentPage}
             />
           )}
           {moviesData.length == 0 && (
