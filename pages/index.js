@@ -213,7 +213,7 @@ export default function Home() {
       )}
       {pos !== 5 && (
         <button
-          className={`absolute bottom-[4rem] text-[1.1rem]  right-4 lg:right-[30vw] lg:bottom-[2vw] z-50 text-sm px-3 py-2 rounded-[5px] bg-[#ff715b] font-bold text-[#FFFFFF] ${
+          className={`absolute bottom-[5.5rem] text-[1.1rem]  right-4 lg:right-[30vw] lg:bottom-[2vw] z-50 text-sm px-3 py-2 rounded-[5px] bg-[#ff715b] font-bold text-[#FFFFFF] ${
             condition2 && 'hidden invisible pointer-events-none'
           }`}
           onClick={handleNext}
@@ -223,7 +223,7 @@ export default function Home() {
       )}
       {condition && (
         <button
-          className='absolute bottom-[4rem] left-4 lg:left-[30vw] lg:bottom-[2vw] z-50'
+          className='absolute bottom-[5.5rem] left-4 lg:left-[30vw] lg:bottom-[2vw] z-50'
           onClick={handlePrev}
         >
           <BiArrowBack className='text-[1.7rem] text-[#fff]' />
