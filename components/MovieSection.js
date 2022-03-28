@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { FaPlay } from 'react-icons/fa';
+import { RiCloseCircleLine } from 'react-icons/ri';
 import YouTube from 'react-youtube';
 
-function MovieSection({ moviesData, getMovie, setMoviesData }) {
+function MovieSection({ moviesData, getMovie, setMoviesData, urlTrailer }) {
   const [showTrailer, setShowTrailer] = useState(false);
   let description;
   function anotherMovie() {
@@ -30,9 +31,14 @@ function MovieSection({ moviesData, getMovie, setMoviesData }) {
   return (
     <div className='w-screen h-screen text-white sm:flex sm:items-center sm:justify-center'>
       {showTrailer && (
-        <div className='absolute w-screen h-screen bg-[#0009] inset-0 z-[99] flex items-center  justify-center'>
+        <div className='absolute w-screen h-screen bg-[#0009] inset-0 z-[99] flex items-center  justify-center backdrop-blur-[4px]'>
+          <div className='closeTrailer absolute right-0 top-0 p-4 '>
+            <button onClick={handleToggleTrailer}>
+              <RiCloseCircleLine className='text-red-500 text-3xl hover:text-red-700' />
+            </button>
+          </div>
           <div className='max-w-[600px] w-full h-[390px]'>
-            <YouTube videoId='2g811Eo7K8U' opts={opts} />
+            <YouTube videoId={urlTrailer} opts={opts} />
           </div>
         </div>
       )}

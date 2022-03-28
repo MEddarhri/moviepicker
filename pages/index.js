@@ -15,6 +15,7 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [urlTrailer, setUrlTrailer] = useState(null);
 
   const [formData, setFormData] = useState({
     Action: false,
@@ -40,7 +41,7 @@ export default function Home() {
     age: 'g-rated',
   });
 
-  const condition = pos > 0 && pos <= 5;
+  const condition = pos > 0 && pos <= 4;
 
   const genreString = [
     'Action',
@@ -169,6 +170,16 @@ export default function Home() {
         `https://api.themoviedb.org/3/discover/movie?api_key=f564669bc935c1eb03e8e8e4824ca301&with_genres=${genreIds}${releaseYear}&page=${currentPage}`
       );
       const data = await res.json();
+      const resTrailer = await fetch(
+        `https://api.themoviedb.org/3/movie/${data.results[currentIndex].id}/videos?api_key=f564669bc935c1eb03e8e8e4824ca301`
+      );
+      const dataTrailer = await resTrailer.json();
+      dataTrailer.results.forEach((video) => {
+        if (video.type == 'Trailer') {
+          console.log(video.key);
+          setUrlTrailer(video.key);
+        }
+      });
       setMoviesData(data.results[currentIndex]);
       setCurrentIndex((prev) => prev + 1);
 
@@ -239,6 +250,7 @@ export default function Home() {
               moviesData={moviesData}
               getMovie={getMovie}
               setMoviesData={setMoviesData}
+              urlTrailer={urlTrailer}
             />
           )}
           {Object.keys(moviesData).length == 0 && (
