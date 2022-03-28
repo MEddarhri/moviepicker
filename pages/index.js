@@ -233,7 +233,7 @@ export default function Home() {
         <div className=' absolute top-0 left-[400vw] w-screen min-h-screen flex items-center justify-center  '>
           <RadioSelection5 />
         </div>
-        <div className=' absolute top-0 left-[500vw] w-screen min-h-screen bg-[#10101c] sm:bg-[#252A34] '>
+        <div className=' absolute top-0 left-[500vw] w-screen min-h-screen bg-gradient bg-[#10101c]  '>
           {Object.keys(moviesData).length > 0 && (
             <MovieSection
               moviesData={moviesData}

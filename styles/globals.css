@@ -175,3 +175,10 @@ input[type='checkbox']:checked+label {
         transform: rotate(360deg);
     }
 }
+
+@media (min-width: 640px) {
+    .bg-gradient {
+        background: -webkit-linear-gradient( 175deg, rgb(45, 47, 60), rgb(16, 16, 28));
+        background: linear-gradient(175deg, #2d2f3c, #10101c);
+    }
+}
