@@ -39,7 +39,7 @@ function MovieSection({ moviesData, getMovie, setMoviesData, urlTrailer }) {
           </div>
           {urlTrailer == null && (
             <p className='md:text-2xl'>
-              Sorry, we've got no trailer for this one
+              {`Sorry, we've got no trailer for this one`}
             </p>
           )}
           {urlTrailer && (
