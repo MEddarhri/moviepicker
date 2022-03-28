@@ -37,9 +37,16 @@ function MovieSection({ moviesData, getMovie, setMoviesData, urlTrailer }) {
               <RiCloseCircleLine className='text-red-500 text-3xl hover:text-red-700' />
             </button>
           </div>
-          <div className='max-w-[600px] w-full h-[390px]'>
-            <YouTube videoId={urlTrailer} opts={opts} />
-          </div>
+          {urlTrailer == null && (
+            <p className='md:text-2xl'>
+              Sorry, we've got no trailer for this one
+            </p>
+          )}
+          {urlTrailer && (
+            <div className='max-w-[600px] w-full h-[390px]'>
+              <YouTube videoId={urlTrailer} opts={opts} />
+            </div>
+          )}
         </div>
       )}
       <div className='max-w-[800px] w-full sm:rounded-[20px] bg-[#10101c] overflow-hidden sm:shadow-xl flex flex-col'>

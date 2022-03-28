@@ -176,8 +176,9 @@ export default function Home() {
       const dataTrailer = await resTrailer.json();
       dataTrailer.results.forEach((video) => {
         if (video.type == 'Trailer') {
-          console.log(video.key);
           setUrlTrailer(video.key);
+        } else {
+          setUrlTrailer(null);
         }
       });
       setMoviesData(data.results[currentIndex]);
