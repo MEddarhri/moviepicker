@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { FaPlay } from 'react-icons/fa';
-import { GoRocket } from 'react-icons/go';
+import YouTube from 'react-youtube';
 
 function MovieSection({ moviesData, getMovie, setMoviesData }) {
+  const [showTrailer, setShowTrailer] = useState(false);
   let description;
   function anotherMovie() {
     setMoviesData({});
     getMovie();
+  }
+  function handleToggleTrailer() {
+    setShowTrailer((prev) => !prev);
   }
 
   if (moviesData.overview.length >= 200) {
@@ -15,9 +19,23 @@ function MovieSection({ moviesData, getMovie, setMoviesData }) {
   } else {
     description = moviesData.overview;
   }
+  const opts = {
+    width: '100%',
+
+    playerVars: {
+      autoplay: 1,
+    },
+  };
 
   return (
     <div className='w-screen h-screen text-white sm:flex sm:items-center sm:justify-center'>
+      {showTrailer && (
+        <div className='absolute w-screen h-screen bg-[#0009] inset-0 z-[99] flex items-center  justify-center'>
+          <div className='max-w-[600px] w-full h-[390px]'>
+            <YouTube videoId='2g811Eo7K8U' opts={opts} />
+          </div>
+        </div>
+      )}
       <div className='max-w-[800px] w-full sm:rounded-[20px] bg-[#10101c] overflow-hidden sm:shadow-xl flex flex-col'>
         <div className='backdrop h-[230px] relative '>
           <div className='absolute z-20 w-full h-[20px] bottom-0 rounded-tl-[20px] rounded-tr-[20px] bg-[#10101c]'></div>
@@ -26,7 +44,10 @@ function MovieSection({ moviesData, getMovie, setMoviesData }) {
             src={`https://www.themoviedb.org/t/p/original${moviesData.backdrop_path}`}
             alt={moviesData.title}
           />
-          <div className='trailer cursor-pointer z-10 absolute w-full h-full bg-[#0005] inset-0 flex items-center justify-center '>
+          <div
+            className='trailer cursor-pointer z-10 absolute w-full h-full bg-[#0005] inset-0 flex items-center justify-center '
+            onClick={handleToggleTrailer}
+          >
             <div className='play w-[50px] h-[50px] rounded-[50%] flex items-center justify-center bg-blue-500 bg-opacity-50'>
               <FaPlay />
             </div>
