@@ -3,6 +3,7 @@ import { FaStar } from 'react-icons/fa';
 import { FaPlay } from 'react-icons/fa';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import YouTube from 'react-youtube';
+import { genres } from '../data/genres';
 
 function MovieSection({ moviesData, getMovie, setMoviesData, urlTrailer }) {
   const [showTrailer, setShowTrailer] = useState(false);
@@ -27,6 +28,16 @@ function MovieSection({ moviesData, getMovie, setMoviesData, urlTrailer }) {
       autoplay: 1,
     },
   };
+
+  const arrayGenres = moviesData.genre_ids
+    .map((id) => {
+      for (let i = 0; i < genres.length; i++) {
+        if (genres[i].id === id) {
+          return genres[i].name;
+        }
+      }
+    })
+    .join(', ');
 
   return (
     <div className='w-screen h-screen text-white sm:flex sm:items-center sm:justify-center'>
@@ -82,8 +93,8 @@ function MovieSection({ moviesData, getMovie, setMoviesData, urlTrailer }) {
               <FaStar className='text-lg text-[#ffe234]' />
               <p className='pt-[0.075rem]'>{moviesData.vote_average}</p>
             </div>
-            <p className='text-[#fff7] text-sm'>Action & adventure, mystery</p>
-            <p className='text-[#fff7] text-sm'>1h 41min</p>
+            <p className='text-[#fff7] text-sm'>{arrayGenres}</p>
+            {/* <p className='text-[#fff7] text-sm'>1h 41min</p> */}
           </div>
           <div className='!ml-auto pl-[30px] pt-10 hidden sm:block flex-shrink-0'>
             <button

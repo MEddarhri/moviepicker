@@ -174,13 +174,16 @@ export default function Home() {
         `https://api.themoviedb.org/3/movie/${data.results[currentIndex].id}/videos?api_key=f564669bc935c1eb03e8e8e4824ca301`
       );
       const dataTrailer = await resTrailer.json();
+      let found = false;
       dataTrailer.results.forEach((video) => {
         if (video.type == 'Trailer') {
+          found = true;
           setUrlTrailer(video.key);
-        } else {
-          setUrlTrailer(null);
         }
       });
+      if (found == false) {
+        setUrlTrailer(null);
+      }
       setMoviesData(data.results[currentIndex]);
       setCurrentIndex((prev) => prev + 1);
 
@@ -203,7 +206,7 @@ export default function Home() {
       setFormData({ ...formData, age: e.target.dataset.value });
     }
   }
-  console.log(moviesData);
+
   return (
     <div className=' relative w-screen min-h-screen overflow-hidden nunito sc-1'>
       {pos !== 5 && (
