@@ -62,6 +62,10 @@ function MovieSection({ moviesData, getMovie, setMoviesData, urlTrailer }) {
       )}
       <div className='max-w-[800px] w-full sm:rounded-[20px] bg-[#10101c] overflow-hidden sm:shadow-xl flex flex-col'>
         <div className='backdrop h-[230px] relative '>
+          <p className='absolute left-4 top-4 lg:left-6 lg:top-5 text-[1.5rem] font-bold inter tracking-wider leading-[1.6rem] lg:leading-[1.8rem] opacity-90'>
+            TEASER <br />
+            TRAILER
+          </p>
           <div className='absolute z-20 w-full h-[20px] bottom-0 rounded-tl-[20px] rounded-tr-[20px] bg-[#10101c]'></div>
           <img
             className='w-full h-full object-cover '
