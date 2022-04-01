@@ -51,7 +51,7 @@ function RadioSelection3({ handleChange, formData }) {
               className='text-sm block rounded-[8px] shadow-inset text-[#fff5] bg-[#2b2b38] py-3 pl-10 '
               htmlFor='lbs3-2'
             >
-              Published in 2020 or 2021.
+              Published in 2021 or 2022.
             </label>
           </div>
           <div className='relative  rounded-[8px] overflow-hidden outer-shadow'>
